@@ -1,0 +1,22 @@
+opam-version: "1"
+maintainer: "zol@benozol.de"
+build: [
+  ["sh" "configure"
+   "--prefix" "%{prefix}%"
+   "--mandir" "%{man}%"
+   "--docdir" "%{lib}%/eliom/doc"
+   "--datadir" "%{lib}%/eliom/share"]
+  ["%{make}%"]
+  ["%{make}%" "install"]
+]
+remove: [
+  ["rm" "-rf" "%{lib}%/eliom" "%{man}%/eliomc.1" "%{man}%/eliomopt.1" "%{man}%/eliomcp.1"
+     "%{man}%/js_of_eliom.1" "%{man}%/eliomdep.1" ]
+]
+depends: [
+  "ocamlfind"
+  "deriving-ocsigen"
+  "js_of_ocaml" {>= "1.3"}
+  "calendar"
+  "ocsigenserver" {>= "2.2"}
+]
